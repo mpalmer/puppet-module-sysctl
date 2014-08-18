@@ -10,12 +10,12 @@ define sysctl(
 		owner   => "root",
 		group   => "root",
 		content => "# THIS FILE IS PUPPET MANAGED\n\n${param} = ${value}\n",
-		require => Sysctl::Packages,
+		require => Class['sysctl::packages'],
 	}
 	
 	exec { "sysctl::set ${param} to ${value}":
 		command => "/sbin/sysctl ${param}=${value}",
 		unless  => "/usr/bin/test \$(/sbin/sysctl ${param}) = '${param} = ${value}'",
-		require => Sysctl::Packages,
+		require => Class['sysctl::packages'],
 	}
 }
