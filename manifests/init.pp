@@ -15,7 +15,7 @@ define sysctl(
 	
 	exec { "sysctl::set ${param} to ${value}":
 		command => "/sbin/sysctl ${param}=${value}",
-		unless  => "/usr/bin/test \$(/sbin/sysctl ${param}) = '${value}'",
+		unless  => "/usr/bin/test \$(/sbin/sysctl ${param}) = '${param} = ${value}'",
 		require => Sysctl::Packages,
 	}
 }
