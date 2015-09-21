@@ -1,5 +1,5 @@
 define sysctl(
-		$param,
+		$param = $name,
 		$value
 ) {
 	include sysctl::packages
