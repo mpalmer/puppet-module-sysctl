@@ -6,7 +6,7 @@ define sysctl(
 
 	file { "/etc/sysctl.d/${name}.conf":
 		ensure  => file,
-		mode    => 0444,
+		mode    => "0444",
 		owner   => "root",
 		group   => "root",
 		content => "# THIS FILE IS PUPPET MANAGED\n\n${param} = ${value}\n",
